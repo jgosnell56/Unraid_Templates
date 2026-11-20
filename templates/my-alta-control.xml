@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>alta-control</Name>
+  <Repository>altalabs/control:1.2h-amd64</Repository>
+  <Registry>https://hub.docker.com/r/altalabs/control</Registry>
+  <Network>bridge</Network>
+  <ExtraNetworks/>
+  <MyIP/>
+  <MyMAC/>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Support/>
+  <Project/>
+  <ReadMe/>
+  <Overview>Alta Labs Control (self-hosted controller).  Alta Labs Docker hub does not use tags like "latest" or "main".  Anytime there is an update from Alta, you will need to edit your repository to point to the latest Control image.&#13;
+NOTE: This container requires its' own macvlan network so it can auto discover your Alta Labs products.</Overview>
+  <Category>Network:Management</Category>
+  <WebUI>https://[IP]</WebUI>
+  <TemplateURL/>
+  <Icon>https://media.alta.inc/portal/logos/company/Alta_Labs_Stacked_Logo/Primary/Alta_Stacked_Logo_Primary_Color.png</Icon>
+  <ExtraParams>-t -i --cgroupns=host --tmpfs /run --tmpfs /run/lock --security-opt seccomp=unconfined --add-host=local.manage.alta.inc:0.0.0.255</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <Memory/>
+  <DateInstalled>1795187513</DateInstalled>
+  <DonateText/>
+  <DonateLink/>
+  <Requires>1. You will need a free license from https://manage.alta.inc/control&#13;
+2. Make sure the network type you attach the container to is a MACVLAN type.&#13;
+3. Full instructions for Docker can be found at https://help.alta.inc/hc/en-us/articles/25411696788507-Setting-Up-Alta-Control-With-Docker</Requires>
+  <Config Name="Data" Target="/data" Default="" Mode="rw" Description="Persistent application data" Type="Path" Display="always" Required="true" Mask="false">/mnt/zedfs/docker/alta-control</Config>
+  <Config Name="Port" Target="443" Default="443" Mode="tcp" Description="Map external host port to the default container port.  This should not be used if the container is set correctly to use a dedicated macvlan network." Type="Port" Display="always" Required="false" Mask="false">443</Config>
+  <Config Name="Cgroup" Target="/sys/fs/cgroup" Default="/sys/fs/cgroup/access.scope" Mode="rw" Description="Host cgroup scope passed into the container" Type="Path" Display="advanced" Required="true" Mask="false">/sys/fs/cgroup/access.scope</Config>
+  <TailscaleStateDir/>
+</Container>
